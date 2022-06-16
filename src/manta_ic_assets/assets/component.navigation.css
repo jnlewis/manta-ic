@@ -1,0 +1,28 @@
+.nav {
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: white;
+  height: 70px;
+  box-shadow: 0 4px 2px -3px #f0f0f0;
+}
+
+.linkItem {
+  margin: 0 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.linkItemBold {
+  margin: 0 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.brand {
+  font-size: 16px;
+}

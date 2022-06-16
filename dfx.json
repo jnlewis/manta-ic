@@ -1,0 +1,35 @@
+{
+  "canisters": {
+    "manta_ic": {
+      "main": "src/manta_ic/main.mo",
+      "type": "motoko"
+    },
+    "manta_ic_assets": {
+      "dependencies": [
+        "manta_ic"
+      ],
+      "frontend": {
+        "entrypoint": "src/manta_ic_assets/src/index.html"
+      },
+      "source": [
+        "src/manta_ic_assets/assets",
+        "dist/manta_ic_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.10.0",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}

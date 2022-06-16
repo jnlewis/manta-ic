@@ -1,0 +1,24 @@
+.document-header-wrapper {
+  padding: 20px 25px;
+  background-color: white;
+  height: 70px;
+  box-shadow: 0 4px 2px -3px #e1e1e1;
+}
+
+.document-header-right {
+  float: right;
+}
+
+.icon-burger {
+  display: inline-block;
+  cursor: pointer;
+}
+.icon-burger > .bar1, 
+.icon-burger > .bar2, 
+.icon-burger > .bar3 {
+  width: 25px;
+  height: 3px;
+  background-color: #464646;
+  margin: 5px 0;
+  transition: 0.4s;
+}

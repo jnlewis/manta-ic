@@ -1,0 +1,37 @@
+.intro {
+  width: 100%;
+  height: 500px;
+  background-color: #bcf5f2;
+  margin-top: 70px; /* offset static header */
+}
+
+.introTextContainer {
+  padding-top: 100px;
+}
+
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 60px;
+  color: #333333;
+}
+
+.subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+}
+
+.heading {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.introOverlay {
+  position: absolute;
+  top: 390px;
+  width: 100%;
+  display: block;
+  height: 200px;
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, transparent 100%);
+}

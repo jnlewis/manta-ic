@@ -1,0 +1,49 @@
+body {
+    font-family: sans-serif;
+    font-size: 1.5rem;
+}
+
+img {
+    max-width: 50vw;
+    max-height: 25vw;
+    display: block;
+    margin: auto;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em;
+    flex-flow: row wrap;
+    max-width: 40vw;
+    margin: auto;
+    align-items: baseline;
+}
+
+button[type="submit"] {
+    padding: 5px 20px;
+    margin: 10px auto;
+    float: right;
+}
+
+.btn {
+    margin: 0 5px;
+}
+
+.btn-primary {
+    background-color: #0e2a3a;
+    border-color: white;
+}
+.btn-primary:hover {
+    background-color: #0d3246;
+    border-color: #0d3246;
+}
+
+.btn-outline-primary {
+    color: #0e2a3a;
+    border-color: #0e2a3a;
+}
+.btn-outline-primary:hover {
+    background-color: #0d3246;
+    border-color: #0d3246;
+}
