@@ -28,7 +28,7 @@ Manta Docs is a decentralized knowledge workspace that lets you create, organize
 ## Workspaces & Documents
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/jnlewis/manta-ic/main/docs/images/workspaces-and-documents.png" alt="Workspaces">
+    <img src="https://raw.githubusercontent.com/jnlewis/manta-ic/main/docs/workspaces-and-documents.jpg" alt="Workspaces">
 </p>
 
 1. **Private Workspace** is a default workspace that lets you create and store documents which can only be viewed by you. There is only one Private Workspace per user, but you can create any number of documents in it.
@@ -42,7 +42,7 @@ Manta Docs is a decentralized knowledge workspace that lets you create, organize
 ## Technologies
 
 <p align="center">
-    <img width="600px" src="https://raw.githubusercontent.com/jnlewis/manta-ic/main/docs/images/architecture.jpg" alt="Archiecture">
+    <img width="600px" src="https://raw.githubusercontent.com/jnlewis/manta-ic/main/docs/architecture.jpg" alt="Archiecture">
 </p>
 
 **Frontend Application (UX)**
