@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {Container, Row, Col, Nav, Button } from "react-bootstrap";
+import {Container, Row, Button } from "react-bootstrap";
 import "../../assets/page.documents.css";
-import DocumentHeader from '../components/DocumentHeader/DocumentHeader';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import BalloonEditor from '@ckeditor/ckeditor5-build-balloon';
-import { getOwnWorkspaces, createDefaultWorkspaces, createDocument, updateDocument, deleteDocument } from "../services/workspaceService";
+import { getOwnWorkspaces, createDefaultWorkspaces, createDocument, updateDocument, deleteDocument, createPublicWorkspace } from "../services/workspaceService";
 import LoadingIndicator from "../components/LoadingIndicator/LoadingIndicator";
 
 const Documents = () => {
@@ -42,8 +41,12 @@ const Documents = () => {
     setIsLoading(false);
   };
 
-  const handleCreateWorkspace = () => {
-    
+  const handleCreateWorkspace = async () => {
+    setIsDocumentActionLoading(true);
+    await createPublicWorkspace();
+    await loadWorkspaces();
+    setSelectedMenu(null);
+    setIsDocumentActionLoading(false);
   }
 
   const handleLoadDocument = (workspaceId, documentId) => {
@@ -100,7 +103,7 @@ const Documents = () => {
                   {workspaces && (
                     <>
                       <a className="tree-nav__item-title" onClick={() => setSelectedMenu('discover')}>
-                        <i className="icon ion-ios-world"></i> DISCOVER
+                        <i className="icon ion-earth"></i> DISCOVER
                       </a>
                       <a className="tree-nav__item-title" onClick={() => setSelectedMenu('bookmarks')}>
                         <i className="icon ion-android-star"></i> BOOKMARKS

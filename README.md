@@ -89,6 +89,7 @@ dfx start --clean
 
 2. Build and deploy the Canisters
 ```
+In a new terminal:
 dfx deploy
 ```
 
@@ -128,6 +129,10 @@ Visit http://localhost:8080
 | getDocument       | Gets a document by ID.                         | Query       |
 | listDocuments     | Search documents by keywords.                  | Query       |
 | listAllDocuments  | List all documents.                            | Query       |
+| joinWorkspace     | Join a public workspace.                       | Transaction |
+| leaveWorkspace    | Leave a workspace.                             | Transaction |
+| listMembers       | Search workspace members by keywords.          | Query       |
+| listAllMembers    | List all workspace members.                    | Query       |
 
 ## Screenshots
 

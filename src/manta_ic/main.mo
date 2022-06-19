@@ -8,6 +8,7 @@ actor Test {
     public type UserId = Principal;
     stable var nextWorkspaceId : Nat = 1;
     stable var nextDocumentId : Nat = 1;
+    stable var nextMemberId : Nat = 1;
 
     type NewWorkspace = {
         title : Text;
@@ -36,12 +37,20 @@ actor Test {
         ownerId : UserId;
         ownerIdText : Text;
     };
+    type Member = {
+        workspaceId: Text;
+        memberUserId : UserId;
+        memberUserIdText : Text;
+    };
 
     private let workspaceStore: DataStore.DataStore<Workspace> = DataStore.DataStore<Workspace>();
     private stable var workspaceEntries : [(Text, Workspace)] = [];
 
     private let documentStore: DataStore.DataStore<Document> = DataStore.DataStore<Document>();
     private stable var documentEntries : [(Text, Document)] = [];
+
+    private let memberStore: DataStore.DataStore<Member> = DataStore.DataStore<Member>();
+    private stable var memberEntries : [(Text, Member)] = [];
 
     // WORKSPACE
 
@@ -92,6 +101,52 @@ actor Test {
         let results: [(Text, Workspace)] = workspaceStore.listAll();
         return results;
     };
+
+    // MEMBERS
+
+
+    public shared(msg) func joinWorkspace(workspaceId: Text): async (Text) {
+
+        // Create workspace member relationship
+        let memberId = Nat.toText(nextMemberId);
+        let memberUserId = msg.caller;
+        let memberUserIdText = Principal.toText(memberUserId);
+
+        // TODO: Check if workspace is public and caller is not owner of workspace
+        // let workspace = getWorkspace(workspaceId);
+        // if (workspace.visibility != "private") {
+        //     return 0;
+        // }
+
+        let data : Member = {
+            workspaceId = workspaceId;
+            memberUserId = memberUserId;
+            memberUserIdText = memberUserIdText;
+        };
+
+        let key : Text = memberId;
+
+        memberStore.put(key, data);
+
+        nextMemberId += 1;
+
+        return memberId;
+    };
+
+    public func leaveWorkspace(memberId: Text) : async () {
+        let entry: ?Member = memberStore.del(memberId);
+    };
+
+    public query func listMembers(filter: ?DataStore.DataFilter) : async [(Text, Member)] {
+        let results: [(Text, Member)] = memberStore.list(filter);
+        return results;
+    };
+
+    public query func listAllMembers() : async [(Text, Member)] {
+        let results: [(Text, Member)] = memberStore.listAll();
+        return results;
+    };
+
 
     // DOCUMENTS
 
@@ -154,6 +209,7 @@ actor Test {
     system func preupgrade() {
         documentEntries := Iter.toArray(documentStore.preupgrade().entries());
         workspaceEntries := Iter.toArray(workspaceStore.preupgrade().entries());
+        memberEntries := Iter.toArray(memberStore.preupgrade().entries());
     };
 
     system func postupgrade() {
@@ -162,5 +218,8 @@ actor Test {
 
         workspaceStore.postupgrade(workspaceEntries);
         workspaceEntries := [];
+
+        memberStore.postupgrade(memberEntries);
+        memberEntries := [];
     };
 };

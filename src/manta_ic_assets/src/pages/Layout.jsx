@@ -12,8 +12,8 @@ const Layout = () => {
     <div>
       {currentPage === 'home' && (
         <>
-          <Navigation currentUser={null} onMenuSelected={(menu) => setCurrentPage(menu)} />
-          <Home />
+          <Navigation onMenuSelected={(menu) => setCurrentPage(menu)} />
+          <Home onMenuSelected={(menu) => setCurrentPage(menu)} />
         </>
       )}
       {currentPage === 'documents' && (
