@@ -3,8 +3,9 @@ import {Container, Row, Button } from "react-bootstrap";
 import "../../assets/page.documents.css";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import BalloonEditor from '@ckeditor/ckeditor5-build-balloon';
-import { getOwnWorkspaces, createDefaultWorkspaces, createDocument, updateDocument, deleteDocument, createPublicWorkspace } from "../services/workspaceService";
+import { getOwnWorkspaces, createDefaultWorkspaces, createDocument, updateDocument, deleteDocument, createPublicWorkspace, joinWorkspace } from "../services/workspaceService";
 import LoadingIndicator from "../components/LoadingIndicator/LoadingIndicator";
+import Discover from "../components/Discover/Discover";
 
 const Documents = () => {
 
@@ -91,6 +92,14 @@ const Documents = () => {
     setSelectedMenu(null);
   }
 
+  const handleJoinWorkspace = async (workspaceId) => {
+    setIsLoading(true);
+    await joinWorkspace(workspaceId);
+    await loadWorkspaces();
+    setSelectedMenu(null);
+    setIsLoading(false);
+  }
+
   return (
     <>
       <Container fluid>
@@ -168,7 +177,7 @@ const Documents = () => {
                   <h2 className="unselected-title">select a section on the left to begin</h2>
                 )}
                 {!isLoading && selectedMenu === 'discover' && (
-                  <h2 className="unselected-title">Here is where you can find and join public workspaces once more people onboard Manta</h2>
+                  <Discover onJoinWorkspace={(workspaceId) => handleJoinWorkspace(workspaceId)} />
                 )}
                 {!isLoading && selectedMenu === 'bookmarks' && (
                   <h2 className="unselected-title">Your bookmarked documents anywhere across Manta will appear here</h2>

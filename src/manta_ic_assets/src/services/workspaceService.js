@@ -5,17 +5,18 @@ export const getOwnWorkspaces = async () => {
 
     const result = [];
 
-    const [identity, workspaces, documents] = await Promise.all([
+    const [identity, workspaces, documents, members] = await Promise.all([
         manta_ic.getCaller(),
         manta_ic.listAllWorkspaces(),
         manta_ic.listAllDocuments(),
+        manta_ic.listAllMembers(),
     ]);
 
     if (workspaces && workspaces.length > 0) {
 
         workspaces.forEach(element => {
             const workspaceData = element[1];
-            if (workspaceData.ownerIdText === identity) {
+            if (shouldShowWorkspace(workspaceData, identity, members)) {
                 const workspaceDocuments = filterDocuments(documents, workspaceData.workspaceId);
                 result.push({
                     workspaceId: workspaceData.workspaceId,
@@ -27,6 +28,62 @@ export const getOwnWorkspaces = async () => {
             }
         });
     }
+
+    return result;
+};
+
+const shouldShowWorkspace = (workspaceData, identity, members) => {
+
+    let result = false;
+
+    if (workspaceData.ownerIdText !== identity) {
+        result = false;
+    }
+    if (workspaceData.title == 'Private Workspace' || 
+        workspaceData.title == 'Public Workspace') {
+        result = true;
+    }
+
+    if (members && members.length > 0) {
+        members.forEach(element => {
+            const membersData = element[1];
+            if (membersData.memberUserIdText === identity && 
+                membersData.workspaceId == workspaceData.workspaceId){
+                    result = true;
+                }
+        });
+    }
+
+    return result;
+}
+
+
+export const getAvailablePublicWorkspaces = async () => {
+    console.log('[workspaceService.getAvailablePublicWorkspaces] Begin');
+
+    const result = [];
+
+    const [identity, workspaces] = await Promise.all([
+        manta_ic.getCaller(),
+        manta_ic.listAllWorkspaces()
+    ]);
+
+    if (workspaces && workspaces.length > 0) {
+        workspaces.forEach(element => {
+            const workspaceData = element[1];
+            if (workspaceData.ownerIdText !== identity) {
+                result.push({
+                    workspaceId: workspaceData.workspaceId,
+                    title: workspaceData.title,
+                    description: workspaceData.description,
+                    visibility: workspaceData.visibility,
+                    documents: []
+                });
+            }
+        });
+    }
+
+    console.log('[workspaceService.getAvailablePublicWorkspaces] Done');
 
     return result;
 };
@@ -127,4 +184,8 @@ export const updateDocument = async (documentId, title, content, workspaceId, ow
 
 export const deleteDocument = async (documentId) => {
     await manta_ic.deleteDocument(documentId);
+};
+
+export const joinWorkspace = async (workspaceId) => {
+    await manta_ic.joinWorkspace(workspaceId);
 };

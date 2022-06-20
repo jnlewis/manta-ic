@@ -137,5 +137,25 @@ Visit http://localhost:8080
 ## Screenshots
 
 <p align="center">
+    <img src="https://raw.githubusercontent.com/jnlewis/manta-ic/main/docs/images/screenshot-intro.png" alt="">
+</p>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/jnlewis/manta-ic/main/docs/images/screenshot-highlight.png" alt="">
+</p>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/jnlewis/manta-ic/main/docs/images/screenshot-usecase.png" alt="">
+</p>
+
+<p align="center">
     <img src="https://raw.githubusercontent.com/jnlewis/manta-ic/main/docs/images/screenshot-documents.png" alt="">
+</p>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/jnlewis/manta-ic/main/docs/images/screenshot-workspaces.png" alt="">
+</p>
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/jnlewis/manta-ic/main/docs/images/screenshot-devices.png" alt="">
 </p>
