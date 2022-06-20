@@ -2,7 +2,9 @@
 
 #### Create, organize, and collaborate
 
-Manta Docs is a decentralized knowledge workspace that lets you create, organize and collaborate on rich documents. Compose private notes that only you can see, or public workspaces where people can join and collaborate on.
+MantaDocs is a decentralized knowledge workspace that lets you create, organize and collaborate on rich documents. From planning your next vacation, to sharing ideas across your team. MantaDocs has you covered. 
+
+Create beautiful documents and organize them in workspaces of your own where you can keep private or make them public so others can join in and collaborate. Discover interesting public workspaces that you can join to see, learn and contribute.
 
 **Contents**
 
