@@ -52,43 +52,6 @@ const Discover = ({ onJoinWorkspace }) => {
                 </Card>
               </Col>
             ))}
-{/* 
-          {workspaces && (
-            <>
-              <Col md={4} sm={6} xs={12}>
-                <Card className="card">
-                  <Card.Body className="card-body">
-                    <Card.Title className="card-title">Manta Discussions</Card.Title>
-                    <div className="divider"></div>
-                    <Card.Text className="card-description">
-                      The official Manta public discussions workspace
-                    </Card.Text>
-                    <Card.Text className="card-description">
-                      1 member
-                    </Card.Text>
-                      <Button onClick={() => onJoinWorkspace('3')}>Join</Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-
-              <Col md={4} sm={6} xs={12}>
-                <Card className="card">
-                  <Card.Body className="card-body">
-                    <Card.Title className="card-title">World Cities</Card.Title>
-                    <div className="divider"></div>
-                    <Card.Text className="card-description">
-                      A curation of famous cities around the world
-                    </Card.Text>
-                    <Card.Text className="card-description">
-                      1 member
-                    </Card.Text>
-                      <Button onClick={() => onJoinWorkspace('4')}>Join</Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </>
-          )} */}
-
           </Row>
         </Container>
       )}
