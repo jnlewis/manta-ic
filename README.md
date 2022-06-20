@@ -11,13 +11,11 @@ Create beautiful documents and organize them in workspaces of your own where you
 - [Features](#features)
 - [Workspaces & Documents](#workspaces-documents)
 - [Technologies](#technologies)
-- [Live Product Preview](#live-product-preview)
 - [Developer Quick Start](#developer-quick-start)
     - [Project Structure](#project-structure)
     - [Local Deployment](#local-deployment)
     - [Running Web Application](#running-web-application)
-- [Interacting With the Contracts](#interacting-with-the-contracts)
-    - [Exchange Contract functions](#exchange-contract-functions)
+    - [Backend Contract Functions](#backend-contract-functions)
 - [Screenshots](#screenshots)
 
 ## Features
@@ -116,7 +114,7 @@ npm run start
 Visit http://localhost:8080
 ```
 
-##### Backend Contract Functions
+#### Backend Contract Functions
 | Function          | Description                                    | Transaction/Query |
 |-------------------|------------------------------------------------|-------------|
 | createWorkspace   | Creates a new private or public workspace.     | Transaction |
